@@ -16,16 +16,16 @@ with open('result.csv', 'w', newline='') as csvfile:
 
         teams_data = soup.find_all('tr', class_='team')
 
-        for player in teams_data:
-            name = player.find('td', class_='name')
-            year = player.find('td', class_='year')
-            wins = player.find('td', class_='wins')
-            losses = player.find('td', class_='losses')
-            ot_losses = player.find('td', class_='ot-losses')
-            pct_text_success = player.find('td', class_='pct text-success')
-            gf = player.find('td', class_='gf')
-            ga = player.find('td', class_='ga')
-            diff_text_success = player.find('td', class_='diff text-success')
+        for team in teams_data:
+            name = team.find('td', class_='name')
+            year = team.find('td', class_='year')
+            wins = team.find('td', class_='wins')
+            losses = team.find('td', class_='losses')
+            ot_losses = team.find('td', class_='ot-losses')
+            pct_text_success = team.find('td', class_='pct text-success')
+            gf = team.find('td', class_='gf')
+            ga = team.find('td', class_='ga')
+            diff_text_success = team.find('td', class_='diff text-success')
 
             if diff_text_success and int(diff_text_success.text.strip()) > 0 and ga and int(ga.text.strip()) <= 300:
                 writer.writerow({'Name': name.text.strip() if name else 'N/A',
